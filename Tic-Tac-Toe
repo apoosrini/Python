@@ -1,3 +1,23 @@
+'''I have tried to solve the problem described here: http://www.practicepython.org/exercise/2015/11/26/27-tic-tac-toe-draw.html
+
+A game board of size 3 X 3 is initialized to 0 as a list of lists
+[[0,0,0]
+ [0,0,0]
+ [0,0,0]]
+
+Input: 
+- Two integers separated by comma to indicate the position to mark the player's move. For example to mark the center to the board, player enters: 2,2
+
+Number of players: 2
+
+* Each player enters the input alternately.
+* Player1's move is always marked with 'X'
+* Player2's move is always marked with 'O'
+
+Output: Displays which player has won the game
+'''
+
+
 import ast
 
 #Function to start playing the game
