@@ -1,0 +1,66 @@
+import ast
+
+#Function to start playing the game
+def tic_tac_toe():
+    print("Start Game")
+    count = 0
+    curr_move = 'Player1'
+    win=0
+    while count < 9:
+        move = input("Enter your move {} :".format(curr_move))
+        move_list = ast.literal_eval(move)
+        
+        while game[move_list[0]-1][move_list[1]-1] in ['X','O']:
+            move = input("Enter another move {} :".format(curr_move))
+            move_list = ast.literal_eval(move)
+
+        if curr_move == 'Player1':
+            game[move_list[0]-1][move_list[1]-1] = 'X'
+            curr_move = 'Player2'
+
+        elif curr_move == 'Player2':
+            game[move_list[0]-1][move_list[1]-1] = 'O'
+            curr_move = 'Player1'
+
+        count += 1
+        
+        for i in range(len(game)):
+            print(game[i])
+
+        #check if there is a winner
+
+        if count > 5:
+            #check rows
+            for i in range(len(game)):
+                if game[i].count(game[i][0]) == 3:
+                    win=game[i][0]
+                    return win
+
+            #check columns
+            i=0
+            for j in range(len(game[0])):
+                if game[i][j] == game[i+1][j] and game[i][j] == game[i+2][j]:
+                    win = game[i][j]
+                    return win
+            #check diagonals
+            if game[0][1] == game[1][1] and game[0][1] == game[2][2]:
+                win = game[0][1]
+                return win
+            elif game[0][2] == game[1][1] and game[1][1] == game[2][0]:
+                win = game[1][1]
+                return win
+
+
+#Initialize a clean board for a new game                
+game = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+
+#Call the function
+win = tic_tac_toe()
+
+#Display the winner
+if win == 'X':
+    print("Player1 has won!")
+elif win== 'O':
+    print("Player2 has won!")
+else:
+    print("Its a tie!")
